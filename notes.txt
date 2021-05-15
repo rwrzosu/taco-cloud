@@ -1,0 +1,6 @@
+//https keystore
+keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
+
+java -jar taco-cloud.jar --spring.profiles.active=prod
+export SPRING_PROFILES_ACTIVE=prod
+export SPRING_PROFILES_ACTIVE=prod,audit,ha
