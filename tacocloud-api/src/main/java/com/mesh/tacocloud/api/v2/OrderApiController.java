@@ -1,4 +1,4 @@
-package com.mesh.tacocloud.api;
+package com.mesh.tacocloud.api.v2;
 
 import com.mesh.tacocloud.data.OrderRepository;
 import com.mesh.tacocloud.domain.Order;
@@ -6,7 +6,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+//@RestController
 @RequestMapping(path = "/orders",
         produces = "application/json")
 @CrossOrigin(origins = "*")

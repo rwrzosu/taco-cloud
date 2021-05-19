@@ -1,9 +1,8 @@
 package com.mesh.tacocloud.api;
 
 import com.mesh.tacocloud.data.TacoRepository;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+//@RestController
 public class RecentTacosController {
 
     private TacoRepository tacoRepo;

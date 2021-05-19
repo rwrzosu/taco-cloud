@@ -1,7 +1,5 @@
 package com.mesh.tacocloud.api.v2;
 
-import com.mesh.tacocloud.api.TacoResource;
-import com.mesh.tacocloud.api.TacoResourceAssembler;
 import com.mesh.tacocloud.data.TacoRepository;
 import com.mesh.tacocloud.domain.Taco;
 import org.springframework.data.domain.PageRequest;
@@ -16,14 +14,11 @@ import java.util.Optional;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@RestController
+//@RestController
 @RequestMapping(path = "/api/v2/design", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class DesignTacoController2 {
     private TacoRepository tacoRepo;
-
-//    @Autowired
-//    EntityLinks entityLinks;
 
     public DesignTacoController2(TacoRepository tacoRepo) {
         this.tacoRepo = tacoRepo;
@@ -37,7 +32,6 @@ public class DesignTacoController2 {
         List<Taco> tacos = tacoRepo.findAll(page).getContent();
 
         CollectionModel<TacoResource> tacoResources = new TacoResourceAssembler().toCollectionModel(tacos);
-
         tacoResources.add(
                 linkTo(methodOn(DesignTacoController2.class).recentTacos()).withRel("recents")
         );

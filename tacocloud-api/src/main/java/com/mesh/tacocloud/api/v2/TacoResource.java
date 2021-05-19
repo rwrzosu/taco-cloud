@@ -1,4 +1,4 @@
-package com.mesh.tacocloud.api;
+package com.mesh.tacocloud.api.v2;
 
 import com.mesh.tacocloud.domain.Taco;
 import lombok.Getter;
@@ -11,17 +11,16 @@ import java.util.Date;
 @Relation(value = "taco", collectionRelation = "tacos")
 public class TacoResource extends RepresentationModel<TacoResource> {
 
-    private static final IngredientResourceAssembler
-            ingredientAssembler = new IngredientResourceAssembler();
+    private static final IngredientResourceAssembler ingredientAssembler = new IngredientResourceAssembler();
 
     @Getter
-    private String name;
+    private final String name;
 
     @Getter
-    private Date createdAt;
+    private final Date createdAt;
 
     @Getter
-    private CollectionModel<IngredientResource> ingredients;
+    private final CollectionModel<IngredientResource> ingredients;
 
     public TacoResource(Taco taco) {
         this.name = taco.getName();

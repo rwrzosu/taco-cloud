@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController
+//@RestController
 @RequestMapping(path = "/api/v1/design", produces = "application/json")
 @CrossOrigin(origins = "*")
 public class DesignTacoController {

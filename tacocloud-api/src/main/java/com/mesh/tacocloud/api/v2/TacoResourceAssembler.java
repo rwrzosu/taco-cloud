@@ -1,6 +1,5 @@
-package com.mesh.tacocloud.api;
+package com.mesh.tacocloud.api.v2;
 
-import com.mesh.tacocloud.api.v2.DesignTacoController2;
 import com.mesh.tacocloud.domain.Taco;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 
@@ -12,7 +11,13 @@ public class TacoResourceAssembler extends RepresentationModelAssemblerSupport<T
     }
 
     @Override
-    public TacoResource toModel(Taco entity) {
+    protected TacoResource instantiateModel(Taco entity) {
         return new TacoResource(entity);
     }
+
+    @Override
+    public TacoResource toModel(Taco entity) {
+        return createModelWithId(entity.getId(), entity);
+    }
+
 }
