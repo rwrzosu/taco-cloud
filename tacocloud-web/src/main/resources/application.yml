@@ -24,8 +24,8 @@
 
 logging:
   file:
-    path: /var/logs/
-    name: TacoCloud.log
+    path: "/var/logs/"
+    name: "TacoCloud.log"
   level:
     root: WARN
     org:
@@ -35,3 +35,8 @@ logging:
 taco:
   orders:
     page-size: 20
+
+spring:
+  data:
+    rest:
+      base-path: "/api"

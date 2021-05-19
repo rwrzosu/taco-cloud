@@ -2,6 +2,7 @@ package com.mesh.tacocloud.domain;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Data
 @Entity
+@RestResource(rel = "tacos", path = "tacos")
 public class Taco {
 
     @Id
