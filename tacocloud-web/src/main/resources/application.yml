@@ -28,6 +28,7 @@ logging:
     name: "TacoCloud.log"
   level:
     root: WARN
+    com.mesh: DEBUG
     org:
       springframework:
         security: DEBUG

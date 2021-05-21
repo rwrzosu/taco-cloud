@@ -1,5 +1,6 @@
 package com.mesh.tacocloud.integration;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.integration.transformer.GenericTransformer;
 import java.io.File;
 
 @Configuration
+@Data
 public class FileWriterIntegrationConfig {
 
     @Value("${taco.outputPath}")
@@ -34,4 +36,16 @@ public class FileWriterIntegrationConfig {
         handler.setAppendNewLine(true);
         return handler;
     }
+
+
+// channels are implemented automaticly but this way we can have more control
+//    @Bean
+//    public MessageChannel textInChannel() {
+//        return new DirectChannel();
+//    }
+//
+//    @Bean
+//    public MessageChannel fileWriterChannel() {
+//        return new DirectChannel();
+//    }
 }
