@@ -30,7 +30,7 @@ public class FileWriterIntegrationConfig {
     @ServiceActivator(inputChannel = "fileWriterChannel")
     public FileWritingMessageHandler fileWriter() {
         FileWritingMessageHandler handler =
-                new FileWritingMessageHandler(new File("/tmp/sia5/files"));
+                new FileWritingMessageHandler(new File(this.outputPath));
         handler.setExpectReply(false);
         handler.setFileExistsMode(FileExistsMode.APPEND);
         handler.setAppendNewLine(true);

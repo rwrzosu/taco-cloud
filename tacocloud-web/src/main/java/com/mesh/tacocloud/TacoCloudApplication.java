@@ -2,6 +2,7 @@ package com.mesh.tacocloud;
 
 import com.mesh.tacocloud.api.v2.TacoResource;
 import com.mesh.tacocloud.domain.Taco;
+import com.mesh.tacocloud.integration.FileWriterGateway;
 import com.mesh.tacocloud.integration.FileWriterIntegrationConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +16,7 @@ import org.springframework.hateoas.client.Traverson;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.Collection;
 
 @Slf4j
 @SpringBootApplication
@@ -25,7 +27,6 @@ public class TacoCloudApplication {
         return new RestTemplate();
     }
 
-
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(TacoCloudApplication.class, args);
 
@@ -33,6 +34,7 @@ public class TacoCloudApplication {
             RestTemplate restTemplate = applicationContext.getBean(RestTemplate.class);
 
             Taco entity = restTemplate.getForObject("http://localhost:8080/api/tacos/{id}", Taco.class, "1");
+            assert entity != null;
             log.debug(entity.toString());
         }
 
@@ -40,7 +42,7 @@ public class TacoCloudApplication {
         Traverson traverson = new Traverson(
                 URI.create("http://localhost:8080/api"), MediaTypes.HAL_JSON);
 
-        ParameterizedTypeReference<CollectionModel<TacoResource>> tacoType = new ParameterizedTypeReference<CollectionModel<TacoResource>>() { };
+        ParameterizedTypeReference<CollectionModel<TacoResource>> tacoType = new ParameterizedTypeReference<>() {};
 
         CollectionModel<TacoResource> tacoRes =
                 traverson
@@ -48,13 +50,20 @@ public class TacoCloudApplication {
                         .follow("recents")
                         .toObject(tacoType);
 
-//        Collection<TacoResource> tacos = tacoRes.getContent();
-//        tacos.forEach( i -> System.out.println(i.toString() + "/////////"));
+        assert tacoRes != null;
+        Collection<TacoResource> tacos = tacoRes.getContent();
+        tacos.forEach( i -> System.out.println(i.toString() + "/////////"));
 
         log.debug("{} --- {}", "1", "2");
 
         FileWriterIntegrationConfig bean = applicationContext.getBean(FileWriterIntegrationConfig.class);
         log.debug(bean.getOutputPath());
+
+        FileWriterGateway fileWriterGateway = applicationContext.getBean(FileWriterGateway.class);
+        assert fileWriterGateway != null;
+
+        fileWriterGateway.writeToFile("rwlog.log", "kaboom");
+
 
     }
 
