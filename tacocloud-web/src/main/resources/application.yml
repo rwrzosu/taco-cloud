@@ -35,6 +35,7 @@ logging:
 taco:
   orders:
     page-size: 20
+  outputPath: "/var/logs/"
 
 spring:
   data:

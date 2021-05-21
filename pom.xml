@@ -7,6 +7,7 @@
         <module>tacocloud-domain</module>
         <module>tacocloud-web</module>
         <module>tacocloud-api</module>
+        <module>tacocloud-integration</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
