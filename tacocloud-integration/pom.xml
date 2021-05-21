@@ -12,6 +12,7 @@
     <artifactId>tacocloud-integration</artifactId>
 
     <properties>
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
     </properties>
 
     <dependencies>
