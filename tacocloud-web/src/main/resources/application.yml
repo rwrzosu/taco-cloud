@@ -42,3 +42,18 @@ spring:
   data:
     rest:
       base-path: "/api"
+
+info:
+  name: "Xxxxx Yyyyy"
+  email: "xxxx@gmail.com"
+  phone: "123123123"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: beans, conditions, loggers, info, metrics
+  info:
+    git:
+      mode: full
+

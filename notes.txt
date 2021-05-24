@@ -4,3 +4,7 @@ keytool -keystore mykeys.jks -genkey -alias tomcat -keyalg RSA
 java -jar taco-cloud.jar --spring.profiles.active=prod
 export SPRING_PROFILES_ACTIVE=prod
 export SPRING_PROFILES_ACTIVE=prod,audit,ha
+
+curl localhost:8081/actuator/loggers/tacos/ingredients \
+-d'{"configuredLevel":"DEBUG"}' \
+-H"Content-type: application/json"
